@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <link href="../css/stylesheet.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />"
+</head>
+<body>
+<div id="mySidenav" class="sidenav">
+    <!-- javascript:void(0) return "undefined" -->
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#17;</a>
+    <?php
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
+        echo '<a href="accountoverview.php">My Account</a>';
+    echo '<a href="logout.php">Logout</a>';
+    } else {
+    echo '<a href="login.php">Login</a>';
+    echo '<a href="register/registerpage.html">Register</a>';
+    }
+    ?>
+    <a href="index.php" class="active">Home</a>
+    <a href="women.php">Women</a>
+    <a href="men.php">Men</a>
+    <a href="couple.php">Couple</a>
+</div>
+<div class="register">
+  <h1>Register</h1>
+  <form action="register.php" method="post" autocomplete="off">
+    <label for="username">
+      <i class="fas fa-user"></i>
+    </label>
+    <input type="text" name="username" placeholder="Username" id="username" required>
+    <label for="password">
+      <i class="fas fa-lock"></i>
+    </label>
+    <input type="password" name="password" placeholder="Password" id="password" required>
+    <label for="email">
+      <i class="fas fa-envelope"></i>
+    </label>
+    <input type="email" name="email" placeholder="E-Mail" id="email" required>
+    <input type="submit" name="register" value="Register">
+  </form>
+</div>
+</body>
+</html>
