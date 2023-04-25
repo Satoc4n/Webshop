@@ -118,6 +118,7 @@ if (session_id() == '' || !isset($_SESSION)) {
                     <div class="footer-list-wrap">
                         <h6 class="ftr-hdr">About Yilisa.com</h6>
                         <ul class="ftr-links-sub">
+                            <li><a href="index.php" rel="nofollow"><strong>Homepage</strong></a></li>
                             <li><a href="/asp/about_us.php" rel="nofollow">Our Company</a></li>
                             <li><a href="/asp/job_opportunities.php" rel="nofollow">Job opportunities</a></li>
                             <li><a href="/asp/catalog.php" rel="nofollow"><strong>Shop Our Catalog</strong></a></li>
@@ -149,8 +150,7 @@ if (session_id() == '' || !isset($_SESSION)) {
                         <form id="ftrEmailForm" method="post" action="http://em.yilisa.com/pub/rf">
                             <div class="error">Please enter a valid email address</div>
                             <input type="text" name="email_address_" id="ftrEmailInput" class="input" placeholder="Enter email address" />
-                            <!--
-                                -->
+                            <!-- Have to change according to our needs -->
                             <input type="submit" class="button" value="SUBMIT" />
                             <input type="hidden" name="country_iso2" value="">
                             <input type="hidden" name="language_iso2" value="en">
@@ -234,7 +234,6 @@ if (session_id() == '' || !isset($_SESSION)) {
         </div>
     </section>
     <!-- Copyright end -->
-    -->
 </div>
 </body>
 </html>
