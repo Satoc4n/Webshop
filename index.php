@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>YILISA Perfumeries</title>
     <link href="css/stylesheet.css" rel="stylesheet">
+    <link href="css/footernew.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,300&display=swap"
@@ -39,7 +40,7 @@ if (session_id() == '' || !isset($_SESSION)) {
 -->
 <div id="mySidenav" class="sidenav">
     <!-- javascript:void(0) return "undefined" -->
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#17;</a>
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#x2715;</a>
     <?php
     if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
         echo '<a href="accountoverview.php">My Account</a>';
@@ -87,53 +88,159 @@ if (session_id() == '' || !isset($_SESSION)) {
 
     <!-- Footer start -->
     <footer>
-        <!-- class="centerIfBiggerThan500px" is interchangeable with "container" -->
-        <div class="centerIfBiggerThan500px">
-            <div class="col-md-6 row">
-                <a href="index.php"><img src="images/logo.jpg" alt="logo"
-                                          class="logo-footer img-fluid center-horizontal"></a>
-                <div class="footer-about">
-                    <p>This site is made possible by our dear investors and our friends who supported us in the most
-                        desperate times.</p>
+        <div class="footer-gray">
+            <div class="footer-custom">
+                <div class="footer-lists">
+                    <div class="footer-list-wrap">
+                        <h6 class="ftr-hdr">Direct Contact</h6>
+                        <ul class="ftr-links-sub">
+                            <li>+49 012485344957</li>
+                            <li>**additional charges may apply</li>
+                        </ul>
+                        <h6 class="ftr-hdr">International</h6>
+                        <ul class="ftr-links-sub">
+                            <li><a href="http://www.art.de" rel="nofollow">Germany</a></li>
+                            <li><a href="https://www.art.com" rel="nofollow">United States and Canada</a></li>
+                        </ul>
+                    </div>
+                    <!--/.footer-list-wrap-->
+                    <div class="footer-list-wrap">
+                        <h6 class="ftr-hdr">Customer Service</h6>
+                        <ul class="ftr-links-sub">
+                            <li><a href="/help/contact_us.php" rel="nofollow">Contact Us</a></li>
+                            <li><a href="/help/problems_with_orders.php" rel="nofollow">Problems with orders</a></li>
+                            <li><a href="/help/shipping_delivery.php" rel="nofollow">Shipping &amp; Delivery</a></li>
+                            <li><a href="/help/returns.php" rel="nofollow">Returns</a></li>
+                            <li><a href="/help/international_orders.php" rel="nofollow">International Orders</a></li>
+                            <li><a href="/help/faq.php" rel="nofollow">FAQs</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-list-wrap">
+                        <h6 class="ftr-hdr">About Yilisa.com</h6>
+                        <ul class="ftr-links-sub">
+                            <li><a href="/asp/about_us.php" rel="nofollow">Our Company</a></li>
+                            <li><a href="/asp/job_opportunities.php" rel="nofollow">Job opportunities</a></li>
+                            <li><a href="/asp/catalog.php" rel="nofollow"><strong>Shop Our Catalog</strong></a></li>
+                            <li><a href="http://blog.yilisa.com" rel="nofollow">Our BLOG</a></li>
+                        </ul>
+                    </div>
+                    <!--/.footer-list-wrap-->
+                    <!--
+                    <div class="footer-list-wrap">
+                        <h6 class="ftr-hdr">My Account</h6>
+                        <ul class="ftr-links-sub">
+                            <art:content rule="!loggedin">
+                                <li class="ftr-Login"><span class="link login-trigger">Access My Account</span></li>
+                                <li><span class="link" onclick="link('/asp/secure/your_account/track_orders-asp/_/posters.htm')">Track My Order</span></li>
+                            </art:content>
+                            <art:content rule="loggedin">
+                                <li class="ftr-Login"><span class="link ftr-access-my-account">Access My Account</span></li>
+                                <li><span class="link" onclick="window.location.href = getProfileKey() + '?pagetype=oh';">Track My Order</span></li>
+                            </art:content>
+                        </ul>
+                    </div>
+                    -->
+                    <!--/.footer-list-wrap-->
                 </div>
-                <br>
-                <div class="footer-quicklinks">
+                <!--/.footer-lists-->
+                <div class="footer-email">
+                    <h6 class="ftr-hdr">Sign up for our newsletter!</h6>
+                    <div id="ftr-email" class="ftr-email-form">
+                        <form id="ftrEmailForm" method="post" action="http://em.yilisa.com/pub/rf">
+                            <div class="error">Please enter a valid email address</div>
+                            <input type="text" name="email_address_" id="ftrEmailInput" class="input" placeholder="Enter email address" />
+                            <!--
+                                -->
+                            <input type="submit" class="button" value="SUBMIT" />
+                            <input type="hidden" name="country_iso2" value="">
+                            <input type="hidden" name="language_iso2" value="en">
+                            <input type="hidden" name="site_domain" value="yilisa.com">
+                            <input type="hidden" name="email_acq_source" value="01-000001">
+                            <input type="hidden" name="email_acq_date" value="" id="ftr-email-date">
+                            <input type="hidden" name="brand_id" value="YILISA">
+                            <input type="hidden" name="_ri_" value="X0Gzc2X%3DWQpglLjHJlYQGnp51yrMf2qXdC9tjU8pzgMtwfYzaVwjpnpgHlpgneHmgJoXX0Gzc2X%3DWQpglLjHJlYQGnyLSq2fzdkuzdzglHMsUhgeNzaSgkk">
+                        </form>
+                    </div>
+                    <!--/.ftr-email-form-->
+                    <div class="ftr-email-privacy-policy"></div>
+                </div>
+                <!--/.footer-email-->
+                <div class="footer-social">
+                    <h6 class="ftr-hdr">Follow Us</h6>
                     <ul>
-                        <li><a href="index.php"><i class="bi bi-arrow-return-right"></i>Home</a></li>
-                        <li><a href="about.php"><i class="bi bi-arrow-return-right"></i>About us</a></li>
-                        <li><a href="contact.php"><i class="bi bi-arrow-return-right"></i>Contact</a></li>
+                        <li>
+                            <a href="https://www.facebook.com/yilisa.com" title="Facebook" onclick="_gaq.push(['_trackSocial', 'Facebook', 'Follow', 'Footer', 'undefined', 'True']);">
+                                <img width="24" height="24" alt="Like us on Facebook" src="http://cache1.artprintimages.com/images/jump_pages/rebrand/footer/fb.png">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://plus.google.com/ourGooglePlusPage" title="Google+" onclick="_gaq.push(['_trackSocial', 'GooglePlus', 'Follow', 'Footer', 'undefined', 'True']);">
+                                <img width="24" height="24" alt="Follow us on Google+" src="http://cache1.artprintimages.com/images/jump_pages/rebrand/footer/gplus.png">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://pinterest.com/yilisaperfumes/" target="_blank">
+                                <img width="24" height="24" alt="Follow us on Pinterest" src="http://cache1.artprintimages.com/images/jump_pages/rebrand/footer/pin-badge.png">
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="http://instagram.com/yilisaperfumes/">
+                                <img width="24" height="24" alt="Follow us on Instagram" src="http://cache1.artprintimages.com/images/jump_pages/rebrand/footer/instagram-badge.png">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.twitter.com/yilisaperfumes" title="Twitter" onclick="_gaq.push(['_trackSocial', 'Twitter', 'Follow', 'Footer', 'undefined', 'True']);">
+                                <img width="67" alt="Follow us on Twitter" src="http://cache1.artprintimages.com/images/jump_pages/rebrand/footer/twitter.png">
+                            </a>
+                        </li>
                     </ul>
                 </div>
+                <!--/.footer-social-->
+                <div class="footer-legal">
+                    <p>&copy; Yilisa.com All Rights Reserved. | <a href="/help/privacy_policy.php" rel="nofollow">Privacy Policy</a> | <a href="/help/terms_of_use.php" rel="nofollow">Terms of Use</a> | <a href="/help/terms_of_sale.php" rel="nofollow">Terms of Sale</a></p>
+                    <p>Made possible with the help we got from friends and various websites that shared their knowledge with us.</p>
+                </div>
+                <!--/.footer-legal-->
+                <div class="footer-payment">
+                    <ul>
+                        <li class="ftr-paypal">
+                            <a href="https://www.paypal.com/en/home" target="_blank">
+                                <span title="Paypal" onclick="openLink('https://www.paypal.com/')"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <span onclick="clickTrack(); return false;" onmouseover="this.style.cursor='pointer'"><img border="0" alt="HACKER SAFE certified sites prevent over 99.9% of hacker crime." src="https://images.scanalert.com/meter/www.art.com/31.gif"></span>
+                        </li>
+                        <li class="ftr-visa">
+                            <a href="visa.com" target="_blank">
+                                <span title="Visa" onclick="openLink('visa.com')"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!--/.footer-payment-->
             </div>
-            <div class="address">
-                <h2><i class="bi bi-map-fill"> </i>Address</h2>
-                <div class="address-street">
-                    Pestalozzistraße 62<br>
-                    72762<br>
-                    Reutlingen<br>
-                </div>
-                <h2><i class="bi bi-telephone-fill"> </i>Telephone</h2>
-                <div class="address-telephone">
-                    +0 111 1111 1111
-                </div>
-                <h2><i class="bi bi-mailbox2"> </i>E-Mail</h2>
-                <div class="address-email">
-                    <a href="mailto: info.studium@reutlingen-university.de">info.studium@reutlingen-university.de</a>
-                </div>
-            </div>
+            <!--/.footer-custom-->
         </div>
+        <!--/.footer-gray-->
     </footer>
     <!-- Footer end-->
     <!-- Copyright start -->
+    <!--
     <section id="copyright">
         <div class="copyright">
-            <p>&copy; 2022 Sato powered by <a href="https://blog.getbootstrap.com/" target="_blank"
-                                              rel="nopener norefferer">Bootstrap</a></p>
-            <!-- rel="noopener" is a security measure https://mathiasbynens.github.io/rel-noopener
+            <p>&copy; 2022 Sato powered by <a href="https://blog.getbootstrap.com/" target="_blank" rel="nopener norefferer">Bootstrap</a></p>
              and target="_blank" opens the link in a new tab -->
         </div>
     </section>
     <!-- Copyright end -->
+    -->
 </div>
 </body>
 </html>
+
+
+<footer>
+
+
+</footer>

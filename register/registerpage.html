@@ -9,7 +9,7 @@
 <body>
 <div id="mySidenav" class="sidenav">
     <!-- javascript:void(0) return "undefined" -->
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#17;</a>
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#x2715;</a>
     <?php
     if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
         echo '<a href="accountoverview.php">My Account</a>';
@@ -34,6 +34,14 @@
     <label for="password">
       <i class="fas fa-lock"></i>
     </label>
+    <div class="help-tip">
+        <p>Password must contain at least <br>
+            &nbsp 1. At least 8 characters <br>
+            &nbsp 2. At least one uppercase character <br>
+            &nbsp 3. At least one lowercase character <br>
+            &nbsp 4. At least one number
+        </p>
+    </div>
     <input type="password" name="password" placeholder="Password" id="password" required>
     <label for="email">
       <i class="fas fa-envelope"></i>

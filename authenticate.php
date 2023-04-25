@@ -12,9 +12,9 @@ if ( mysqli_connect_errno() ) {
 if ( !isset($_POST['username'], $_POST['password']) ) {
     exit('Please fill both the username and password fields!');
 }
-// Prepare our SQL, preparing the SQL statement will prevent SQL injection.
+// Prepare our SQL to prevent SQL Injection
 if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?')) {
-    // Bind parameters (s = string, i = int etc), in our case the username is a string so we use "s"
+    // Bind parameters (s = string, i = int etc)
     $stmt->bind_param('s', $_POST['username']);
     $stmt->execute();
     // Store the result so we can check if the account exists in the database.

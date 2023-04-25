@@ -33,7 +33,7 @@ if (session_id() == '' || !isset($_SESSION)) {
 ?>
 <div id="mySidenav" class="sidenav">
     <!-- javascript:void(0) return "undefined" -->
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#17;</a>
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#x2715;</a>
     <?php
     if (isset($_SESSION['username'])) {
         echo '<a href="account.php">My Account</a>';
