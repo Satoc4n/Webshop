@@ -7,10 +7,15 @@ namespace Composer\Autoload;
 class ComposerStaticInit0f86680ddea8402f55afe5246db30171
 {
     public static $prefixLengthsPsr4 = array (
+        'R' => 
+        array (
+            'RobThree\\Auth\\' => 14,
+        ),
         'P' => 
         array (
             'PragmaRX\\Google2FA\\' => 19,
             'ParagonIE\\ConstantTime\\' => 23,
+            'PHPMailer\\PHPMailer\\' => 20,
         ),
         'D' => 
         array (
@@ -23,6 +28,10 @@ class ComposerStaticInit0f86680ddea8402f55afe5246db30171
     );
 
     public static $prefixDirsPsr4 = array (
+        'RobThree\\Auth\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/robthree/twofactorauth/lib',
+        ),
         'PragmaRX\\Google2FA\\' => 
         array (
             0 => __DIR__ . '/..' . '/pragmarx/google2fa/src',
@@ -30,6 +39,10 @@ class ComposerStaticInit0f86680ddea8402f55afe5246db30171
         'ParagonIE\\ConstantTime\\' => 
         array (
             0 => __DIR__ . '/..' . '/paragonie/constant_time_encoding/src',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
         'DASPRiD\\Enum\\' => 
         array (

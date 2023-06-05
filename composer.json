@@ -1,6 +1,8 @@
 {
     "require": {
         "pragmarx/google2fa": "^8.0",
-        "bacon/bacon-qr-code": "^2.0"
+        "bacon/bacon-qr-code": "^2.0",
+        "robthree/twofactorauth": "^v2.0.0",
+        "phpmailer/phpmailer": "^v6.8.0"
     }
 }

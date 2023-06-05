@@ -29,4 +29,3 @@ $secret = $google2fa->generateSecretKey();
 $sql = "UPDATE accounts SET 2fa='$secret' WHERE id=USER_ID";
 
 $con->close();
-

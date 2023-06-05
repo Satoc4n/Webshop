@@ -28,7 +28,19 @@ session_start();
 if (session_id() == '' || !isset($_SESSION)) {
     session_start();
 }
+// Connect to local host server for items
+$DATABASE_HOST  = 'localhost';
+$DATABASE_USER = 'root';
+$DATABASE_PASS = '';
+$DATABASE_NAME = 'phplogin';
+
+$con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
+if ( mysqli_connect_errno() ) {
+    exit('Failed to connect to MySQL: ' . mysqli_connect_error());
+}
+$result = mysqli_query($con, "SELECT price FROM items");
 ?>
+
 <!-- Top navigation bar. top-bar or side-bar-->
 <!--
 <nav class="top-bar">
@@ -69,23 +81,51 @@ if (session_id() == '' || !isset($_SESSION)) {
     </div>
 </div>
 <!-- Search bar end -->
-<!-- Search bar start, doesnt work -->
-<div class="row height d-flex justify-content-center align-items-center">
-    <div class="col-md-8">
-        <div class="search">
-            <i class="fa fa-search"></i>
-            <input type="text" class="form-control" placeholder="Search">
-            <button class="bi bi-search"> Search</button>
-        </div>
-    </div>
-</div>
+<!-- Search bar start, doesn't work -->
+
 <!-- Search bar end -->
 <!-- Start of the main division -->
 <div id="main">
-    <header>Welcome to yilisa! PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER</header>
-    <article></article>
-    <p>This is where our items and such things go PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER</p>
+    <div class="indexStripe">
+        <header style="color: white; background-color: black; font-size: 24pt; position: center; text-align: center; font-family: 'Bauhaus 93'">Welcome to yilisa! </header>
+        <article></article>
+        <p>This is where our items and such things go PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER</p>
+    </div>
+    <div class="row height d-flex justify-content-center align-items-center">
+        <div class="col-md-8">
+            <div class="search">
+                <i class="fa fa-search"></i>
+                <input type="text" class="form-control" placeholder="Search">
+                <button class="bi bi-search"> Search</button>
+            </div>
+        </div>
+    </div>
+    <!-- Start of items division -->
+    <div class="itemCard">
+        <img src="images/perfumethumbnails/tom_ford-black-orchid375x500.jpg" alt="black_orchid">
+        <h1>Tom Ford Black Orchid</h1>
+        <tr>
+        <?php
+            while($row = mysqli_fetch_assoc($result)) {
+            ?>
+            <td><?php echo $row['price'] ?></td>
+        </tr>
+            <?php
+            }
+        ?>
+        <p>Even though it smells like a perfume for women, we assure you it also is perfect for men</p>
+        <p><button>Add to cart</button></p>
+    </div>
 
+    <div class="itemCard">
+        <img src="images/perfumethumbnails/guy_laroche_horizon.jpg" alt="horizon">
+        <h1>Guy Laroche Horizon</h1>
+        <p class="itemPrice">50,99 $ </p>
+        <p>Some description about the perfume</p>
+        <p><button>Add to cart</button></p>
+
+    </div>
+    <!-- End of items division -->
     <!-- Footer start -->
     <footer>
         <div class="footer-gray">
@@ -110,9 +150,9 @@ if (session_id() == '' || !isset($_SESSION)) {
                             <li><a href="/help/contact_us.php" rel="nofollow">Contact Us</a></li>
                             <li><a href="/help/problems_with_orders.php" rel="nofollow">Problems with orders</a></li>
                             <li><a href="/help/shipping_delivery.php" rel="nofollow">Shipping &amp; Delivery</a></li>
-                            <li><a href="/help/returns.php" rel="nofollow">Returns</a></li>
+                            <li><a href="/help/returns.php" rel="nofollow">RetSurns</a></li>
                             <li><a href="/help/international_orders.php" rel="nofollow">International Orders</a></li>
-                            <li><a href="/help/faq.php" rel="nofollow">FAQs</a></li>
+                            <li><a href="/help/faq.php" rel="nofollow">FAQ</a></li>
                         </ul>
                     </div>
                     <div class="footer-list-wrap">
@@ -237,7 +277,6 @@ if (session_id() == '' || !isset($_SESSION)) {
 </div>
 </body>
 </html>
-
 
 <footer>
 
