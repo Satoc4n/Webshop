@@ -18,3 +18,13 @@ function callEnable2FA() {
         $("div").text(result);
         }})
 }
+// Compare password fields in register.html
+function check () {
+    let input = document.getElementById('password_confirm');
+    if (input.value != document.getElementById('password').value) {
+        input.setCustomValidity('Password must be matching');
+    }
+    else {
+        input.setCustomValidity('');
+    }
+}
