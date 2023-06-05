@@ -81,13 +81,12 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
             $stmt->bind_param('sss', $_POST['username'], $password, $_POST['email']);
             $stmt->execute();
 
-            //$userEmail =  'email';
             //Email user email if registration is successful
 
             try {
                 // Recipient settings
                 $mail->SetFrom('yilisaperfumes_noreply@mailtrap.io', 'Yilisa Colognes No Reply');
-                $mail->addAddress('SomeEmail@mailtrap.io', 'Welcome to YILISA');
+                $mail->addAddress($_POST["email"], 'Welcome to YILISA');
 
                 // Content settings
                 $mail->IsHTML(true);
@@ -101,7 +100,7 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
             catch (Exception $e) {
                 echo "ERROR: {$mail->ErrorInfo}";
             }
-            }
+        }
 
             /*
             $to = 'sandbox.smtp.mailtrap.io';
