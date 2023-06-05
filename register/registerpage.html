@@ -31,9 +31,6 @@
       <i class="fas fa-user"></i>
     </label>
     <input type="text" name="username" placeholder="Username" id="username" required>
-    <label for="password">
-      <i class="fas fa-lock"></i>
-    </label>
     <div class="help-tip">
         <p>Password must contain at least <br>
             &nbsp 1. At least 8 characters <br>
@@ -44,13 +41,20 @@
             <a href="../help/term_of_use.php">Please read our term of service</a>
         </p>
     </div>
-    <input type="password" name="password" placeholder="Password" id="password" required>
+    <label for="password">
+      <i class="fas fa-lock"></i>
+    </label>
+      <!-- Using regex for password validation -->
+    <input type="password" name="password" placeholder="Password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" oninput="check()" required>
+    <input type="password" name="passwordConfirmation" placeholder="Password Confirmation" id="passwordConfirmation" oninput="check()" required>
     <label for="email">
       <i class="fas fa-envelope"></i>
     </label>
-    <input type="email" name="email" placeholder="E-Mail" id="email" required>
+     <!-- HTML type="email" doesn't check for what comes after @. This makes it very flawed. Using RegEx has flaws but it works for now. -->
+    <input type="text" name="email" placeholder="E-Mail" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
     <input type="checkbox" name="tos" id="toscheck" required><p>I have read the terms of service and accept them.</p>
     <input type="submit" name="register" value="Register">
+
   </form>
 </div>
 </body>
