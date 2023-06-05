@@ -88,7 +88,6 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
                 // Recipient settings
                 $mail->SetFrom('yilisaperfumes_noreply@mailtrap.io', 'Yilisa Colognes No Reply');
                 $mail->addAddress('SomeEmail@mailtrap.io', 'Welcome to YILISA');
-                //$mail->addReplyTo('ADD-REPLY-TO-EMAIL', 'ADD-REPLY-TO-NAME');
 
                 // Content settings
                 $mail->IsHTML(true);
