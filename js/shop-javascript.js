@@ -28,3 +28,30 @@ function check () {
         input.setCustomValidity('');
     }
 }
+function updateUserActivity() {
+    $.ajax({
+        url: 'update_activity.php',
+        method: 'POST',
+        success: function (reponse) {
+
+        }
+    });
+}
+setInterval((updateUserActivity, 300));
+
+function updateOnlineUsersCount() {
+    $.ajax({
+        url: 'get_online_users_count.php',
+        method: 'GET',
+        success: function (response) {
+            $('#online-users-count').text(reponse);
+        }
+    });
+}
+updateOnlineUsersCount();
+setInterval(updateOnlineUsersCount, 300);
+
+let stillAlive = setInterval((async function ping() {
+    await fetch("stillAlive.php");
+    setTimeout(ping, 60000)
+}));
