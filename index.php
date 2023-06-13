@@ -89,7 +89,30 @@ $result = mysqli_query($con, "SELECT price FROM items");
     <div class="indexStripe">
         <header style="color: white; background-color: black; font-size: 24pt; position: center; text-align: center; font-family: 'Bauhaus 93'">Welcome to yilisa! </header>
         <article></article>
-        <p>This is where our items and such things go PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER</p>
+        <!-- Show how many users online with AJAX -->
+        <!-- Not with AJAX but done with saving the online user count to a text file and reading from it. Must change it -->
+        <div>
+            <!-- Can be deleted since we can now count online users with $_SESSION -->
+            <!--
+            <p id="counter">Users Online: <iframe src="tempFiles/counter.php"></iframe> </span></p>
+            -->
+            <?php
+            // Connect to database as usual
+                $DATABASE_HOST = 'localhost';
+                $DATABASE_USER = 'root';
+                $DATABASE_PASS = '';
+                $DATABASE_NAME = 'phplogin';
+
+                $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
+                if ( mysqli_connect_errno() ) {
+                    exit('Failed to connect to MySQL: ' . mysqli_connect_error());
+                }
+                $onlineUserCount = mysqli_query($con, "SELECT COUNT(isOnline) FROM accounts WHERE isOnline = '1'");
+                $infoOnlineUserCount = mysqli_fetch_array($onlineUserCount);
+
+            ?>
+            <p name="howManyUsersOnline">Online User Counter: <?php echo array_sum($infoOnlineUserCount) - 1; ?></p>
+        </div>
     </div>
     <div class="row height d-flex justify-content-center align-items-center">
         <div class="col-md-8">
@@ -101,6 +124,7 @@ $result = mysqli_query($con, "SELECT price FROM items");
         </div>
     </div>
     <!-- Start of items division -->
+    <div style="display: flex">
     <div class="itemCard">
         <img src="images/perfumethumbnails/tom_ford-black-orchid375x500.jpg" alt="black_orchid">
         <h1>Tom Ford Black Orchid</h1>
@@ -124,6 +148,7 @@ $result = mysqli_query($con, "SELECT price FROM items");
         <p>Some description about the perfume</p>
         <p><button>Add to cart</button></p>
 
+    </div>
     </div>
     <!-- End of items division -->
     <!-- Footer start -->

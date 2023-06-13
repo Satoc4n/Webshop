@@ -56,25 +56,43 @@ if (session_id() == '' || !isset($_SESSION)) {
         <span style="cursor:pointer; font-size: 30px;background-color: black; color: white" onclick="openNav()">&#9776; Menu</span>
     </div>
 </div>
+<!-- Login form start -->
 <div class="login">
     <h1>Login</h1>
     <form action="authenticate.php" method="post">
         <label for="username">
             <i class="fas fa-user"></i>
         </label>
+        <!-- Username / Password forms -->
         <input type="text" name="username" placeholder="Username" id="username" required>
         <label for="password">
             <i class="fas fa-lock"></i>
         </label>
         <input type="password" name="password" placeholder="Password" id="password" required>
-        <input type="submit" value="Login">
-        <input type="checkbox" onclick="toggleVisibility()">
-        <!-- Doesn't work?? -->
-        <div class="tooltip">Hover over me
-            <span class="tooltiptext">Tooltip text</span>
+        <!-- Remember me button -->
+        <div class="form-check">
+            Remember me? <input type="checkbox" class="form-check-input" name="remember">
         </div>
+        <!-- Extend cookie timer if remember me is ticked. -->
+        <?
+            if (!empty($_POST["remember"])) {
+                setcookie("username", $_POST["username"], time() + 36000);
+                setcookie("password", $_POST["password"], time() + 36000);
+            }
+            else {
+                setcookie("username", "");
+                setcookie("password", "");
+                echo "Cookies not set!";
+            }
+        ?>
+        <!-- Submit button -->
+        <input type="submit" value="Login">
+        <!-- Password reset button to direct the user to password reset page -->
+        <p><a href="/passwordReset/pass_reset_page.html">Reset password.</a> </p>
     </form>
 </div>
+<!-- Login form end -->
+
 <!-- Footer start -->
 <footer>
     <div class="container">
