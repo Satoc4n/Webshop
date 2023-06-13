@@ -46,6 +46,9 @@
     </label>
       <!-- Using regex for password validation -->
     <input type="password" name="password" placeholder="Password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" oninput="check()" required>
+    <label for="passwordConfirmation">
+      <i class="fas fa-lock fa-beat-fade"></i>
+    </label>
     <input type="password" name="passwordConfirmation" placeholder="Password Confirmation" id="passwordConfirmation" oninput="check()" required>
     <label for="email">
       <i class="fas fa-envelope"></i>
