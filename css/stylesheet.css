@@ -70,6 +70,12 @@ header {
     max-width:100%;
     height:auto;
 }
+.img-thumbnail-stack-exchange {
+    float: left;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+}
 .col-md-1 {
     flex:0 0 auto;
     width:8.33333333%;
