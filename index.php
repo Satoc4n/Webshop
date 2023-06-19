@@ -90,28 +90,31 @@ $result = mysqli_query($con, "SELECT price FROM items");
         <header style="color: white; background-color: black; font-size: 24pt; position: center; text-align: center; font-family: 'Bauhaus 93'">Welcome to yilisa! </header>
         <article></article>
         <!-- Show how many users online with AJAX -->
-        <!-- Not with AJAX but done with saving the online user count to a text file and reading from it. Must change it -->
         <div>
             <!-- Can be deleted since we can now count online users with $_SESSION -->
             <!--
             <p id="counter">Users Online: <iframe src="tempFiles/counter.php"></iframe> </span></p>
             -->
             <?php
-            // Connect to database as usual
+                // Connect to database as usual
                 $DATABASE_HOST = 'localhost';
                 $DATABASE_USER = 'root';
                 $DATABASE_PASS = '';
                 $DATABASE_NAME = 'phplogin';
-
+                // Prepare the sql query for execution
                 $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
                 if ( mysqli_connect_errno() ) {
                     exit('Failed to connect to MySQL: ' . mysqli_connect_error());
                 }
+                // Execute he query and fetch the results in an array, preparing it for array_sum() function. !! Array Sum counts everything double. Maybe for each??
                 $onlineUserCount = mysqli_query($con, "SELECT COUNT(isOnline) FROM accounts WHERE isOnline = '1'");
                 $infoOnlineUserCount = mysqli_fetch_array($onlineUserCount);
 
+                // Prepare table for later use
+                $table_name = 'items';
             ?>
-            <p name="howManyUsersOnline">Online User Counter: <?php echo array_sum($infoOnlineUserCount) - 1; ?></p>
+            <!-- Print the user counter to HTML -->
+            <p name="howManyUsersOnline">Online User Counter: <?php echo array_sum($infoOnlineUserCount); ?></p>
         </div>
     </div>
     <div class="row height d-flex justify-content-center align-items-center">
@@ -125,29 +128,67 @@ $result = mysqli_query($con, "SELECT price FROM items");
     </div>
     <!-- Start of items division -->
     <div style="display: flex">
+    <!-- Start of product division. -->
     <div class="itemCard">
+        <!-- Image / Thumbnail of the product. -->
         <img src="images/perfumethumbnails/tom_ford-black-orchid375x500.jpg" alt="black_orchid">
         <h1>Tom Ford Black Orchid</h1>
-        <tr>
         <?php
-            while($row = mysqli_fetch_assoc($result)) {
-            ?>
-            <td><?php echo $row['price'] ?></td>
-        </tr>
-            <?php
+            $itemId = '1';
+            $stmt = "SELECT name FROM $DATABASE_NAME.$table_name WHERE itemID = itemId";
+            $result = mysqli_query($con, $stmt);
+            if (mysqli_num_rows($result) > 0) {
+                $row = mysqli_fetch_assoc($result);
+                echo $row["name"];
             }
         ?>
+        <p class="itemPrice"><?php
+            // Prepare itemID every time.
+            // Have to find a workaround.
+            $stmt = "SELECT price FROM $DATABASE_NAME.$table_name WHERE itemID = itemId";
+            $result = mysqli_query($con, $stmt);
+            // Check if there are any matches.
+            if (mysqli_num_rows($result) > 0) {
+                $row = mysqli_fetch_assoc($result);
+                echo $row["price"];
+            }
+            ?> $</p>
         <p>Even though it smells like a perfume for women, we assure you it also is perfect for men</p>
         <p><button>Add to cart</button></p>
     </div>
-
+    <!-- End of product division. -->
+    <!-- Start of product division -->
     <div class="itemCard">
+        <!-- Image / Thumbnail of the product. -->
         <img src="images/perfumethumbnails/guy_laroche_horizon.jpg" alt="horizon">
+        <!-- Name of the product. -->
         <h1>Guy Laroche Horizon</h1>
-        <p class="itemPrice">50,99 $ </p>
+        <!-- Get the item price from the database. -->
+        <p class="itemPrice"><?php
+            // Prepare itemID every time.
+            // Have to find a workaround.
+            $stmt = "SELECT price FROM $DATABASE_NAME.$table_name WHERE itemID = '2'";
+            $result = mysqli_query($con, $stmt);
+            // Check if there are any matches.
+            if (mysqli_num_rows($result) > 0) {
+                $row = mysqli_fetch_assoc($result);
+                echo $row["price"];
+            }
+            ?> $</p>
         <p>Some description about the perfume</p>
         <p><button>Add to cart</button></p>
-
+    </div>
+    <!-- End of product division. -->
+    <!-- Start of experimentel product division. -->
+    <div class="itemCard">
+        <div class="img-thumbnail-stack-exchange">
+            <img src="images/perfumethumbnails/gucci_alchemist_garden_green.jpg" alt="alchemist_garden_green" ">
+        </div>
+        <h1>Gucci</h1>
+        <?php
+        $itemID = '3';
+        echo '<script type="text/javascript">','getItemDetails();', '</script>';
+        ?>
     </div>
     </div>
     <!-- End of items division -->
