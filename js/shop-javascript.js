@@ -55,3 +55,14 @@ let stillAlive = setInterval((async function ping() {
     await fetch("stillAlive.php");
     setTimeout(ping, 60000)
 }));
+
+// Function to fetch item details from the SQL Database
+function getItemDetails() {
+    const con = mysqli_connect (DATABASE_HOST, DATABASE_USER, DATABSE_PASS, DATABASE_NAME);
+    const stmt = 'SELECT name FROM ${DATABASE_NAME}.${table_name} WHERE itemID = ${itemID}';
+    const result = mysqli_query(con, stmt);
+    if (result.length > 0) {
+        const row = result[0];
+        console.log(row["name"]);
+    }
+}
